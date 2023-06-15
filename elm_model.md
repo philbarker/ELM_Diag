@@ -15,7 +15,6 @@ classDiagram
         +String decision
         +Date reviewDate
         +Date expiryDate
-        
     }
     Accreditation --> WebResource : report
     Accreditation --> Organisation : organisation
@@ -26,6 +25,7 @@ classDiagram
     Accreditation --> Concept : limitCredentialType
     Accreditation --> Concept : limitAbstractProgramme
     Accreditation --> Concept : status
+    Accreditation --> Concept : dc_type
     Accreditation --> Organisation : accreditingAgent
     Accreditation --> WebResource : landingPage
     Accreditation --> WebResource : foaf_homePage
@@ -45,6 +45,18 @@ classDiagram
     Agent --> Note : additionalNote
     Agent --> dc_Location : location
     Agent --> ContactPoint : contactPoint
+    class Group["Group"]{
+        +String adms_identifier
+        +String skos_altLabel
+        +String skos_prefLabel
+    }
+    Group --> Concept : dc_type
+    Group --> Note : additionalNote
+    Group --> dc_Location : location
+    Group --> ContactPoint : contactPoint
+    Group --> Agent : foaf_member
+
+
     class LearningOpportunity["Learning Opportunity"]
     LearningOpportunity --> Grant : grant
     class Qualification["Qualification"]
