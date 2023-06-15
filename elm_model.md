@@ -111,5 +111,12 @@ classDiagram
     Claim --> AwardingProcess : awardedBy
     Claim --> Specification : specifiedBy
     Claim --> Claim : hasPart
+%%=========
+%% Code
+%%=========
+    class Code["Code (as skos Concept)"]{
+        +String skos_prefLabel
+    }
+    Code --> ConceptScheme : inScheme
 
 ```
