@@ -11,8 +11,8 @@ classDiagram
     Accreditation --> WebResource : report
     Accreditation --> Organisation : organisation
     Accreditation --> Qualification : limitQualification
-    LearningOpportunity --> Grant : grant
     class LearningOpportunity["Learning Opportunity"]
+    LearningOpportunity --> Grant : grant
     class Qualification["Qualification"]
     class Grant["Grant"]
 ```
