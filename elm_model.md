@@ -11,6 +11,12 @@ classDiagram
     Accreditation --> WebResource : report
     Accreditation --> Organisation : organisation
     Accreditation --> Qualification : limitQualification
+    Accreditation --> Concept : limitField
+    Accreditation --> Concept : limitEQFLevel
+    Accreditation --> Concept : limitJurisdiction
+    Accreditation --> Concept : limitCredentialType
+    Accreditation --> Concept : limitAbstractProgramme
+    
     class LearningOpportunity["Learning Opportunity"]
     LearningOpportunity --> Grant : grant
     class Qualification["Qualification"]
