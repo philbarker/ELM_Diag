@@ -40,9 +40,11 @@ classDiagram
         +String adms_identifier
         +String skos_altLabel
         +String skos_prefLabel
+        +Date lastModificationDate
     }
     Agent --> Note : additionalNote
     Agent --> dc_Location : location
+    Agent --> ContactPoint : contactPoint
     class LearningOpportunity["Learning Opportunity"]
     LearningOpportunity --> Grant : grant
     class Qualification["Qualification"]
