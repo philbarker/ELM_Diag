@@ -70,7 +70,7 @@ classDiagram
     LearningOpportunity --> Grant : grant
     class Qualification["Qualification"]
     class Grant["Grant"]
-    class dc_PeriodOfTime[dcterms Period of Time]{
+    class dc_PeriodOfTime["dcterms Period of Time"]{
         +Date startDate
         +Date endDate
     }
