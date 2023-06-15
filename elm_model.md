@@ -65,7 +65,7 @@ classDiagram
     AwardingOpportunity --> LearningAchievementSpecification : learningAchievementSpecification
     AwardingOpportunity --> dc_temproal : dc_PeriodOfTime
     AwardingOpportunity --> Organisation : awardingBody 
-
+# next up AwardingProcess
     class LearningOpportunity["Learning Opportunity"]
     LearningOpportunity --> Grant : grant
     class Qualification["Qualification"]
