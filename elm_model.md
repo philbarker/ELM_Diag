@@ -8,11 +8,11 @@ classDiagram
     class Accreditation["Accreditation"]{
         +String decision
     }
+    class LearningOpportunity["Learning Opportunity"]
+    class Qualification["Qualification"]
+    class Grant["Grant"]
     Accreditation --> WebResource : report
     Accreditation --> Organisation : organisation
     Accreditation --> Qualification : limitQualification
-    class LearningOpportunity["Learning Opportunity"]
     LearningOpportunity --> Grant : grant
-    class Grant["Grant"]
-    class Qualification["Qualification"]
 ```
