@@ -6,6 +6,9 @@ description: European Learning Model data model diagrammed using Mermaid.
 ---
 classDiagram
     class Accreditation["Accreditation"]{
+        +String adms_identifier
+        +String dc_title
+        +String dc_description
         +String decision
         +Date reviewDate
         +Date expiryDate
@@ -18,8 +21,13 @@ classDiagram
     Accreditation --> Concept : limitJurisdiction
     Accreditation --> Concept : limitCredentialType
     Accreditation --> Concept : limitAbstractProgramme
+    Accreditation --> Concept : status
     Accreditation --> Organisation : accreditingAgent
     Accreditation --> WebResource : landingPage
+    class Address["Address"]{
+        +String adms_identifier
+
+    }
     class LearningOpportunity["Learning Opportunity"]
     LearningOpportunity --> Grant : grant
     class Qualification["Qualification"]
