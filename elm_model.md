@@ -9,13 +9,9 @@ classDiagram
         +String adms_identifier
         +String dc_title
         +String dc_description
-        +Date dc_issued
-        +Date dc_modified
-        +Date dc_valid
         +String decision
         +Date reviewDate
         +Date expiryDate
-        
     }
     Accreditation --> WebResource : report
     Accreditation --> Organisation : organisation
@@ -28,8 +24,6 @@ classDiagram
     Accreditation --> Concept : status
     Accreditation --> Organisation : accreditingAgent
     Accreditation --> WebResource : landingPage
-    Accreditation --> WebResource : foaf_homePage
-    Accreditation --> WebResource : supplementaryDocument
     class Address["Address"]{
         +String adms_identifier
 
@@ -42,7 +36,6 @@ classDiagram
         +String skos_prefLabel
     }
     Agent --> Note : additionalNote
-    Agent --> dc_Location : location
     class LearningOpportunity["Learning Opportunity"]
     LearningOpportunity --> Grant : grant
     class Qualification["Qualification"]
