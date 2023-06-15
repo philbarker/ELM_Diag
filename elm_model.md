@@ -15,27 +15,26 @@ classDiagram
         +String decision
         +Date reviewDate
         +Date expiryDate
+        +Concept limitField
+        +Concept limitEQFLevel
+        +Concept limitJurisdiction
+        +Concept limitCredentialType
+        +Concept limitAbstractProgramme
+        +Concept status
+        +Concept dc_type
     }
     Accreditation --> WebResource : report
     Accreditation --> Organisation : organisation
     Accreditation --> Qualification : limitQualification
-    Accreditation --> Concept : limitField
-    Accreditation --> Concept : limitEQFLevel
-    Accreditation --> Concept : limitJurisdiction
-    Accreditation --> Concept : limitCredentialType
-    Accreditation --> Concept : limitAbstractProgramme
-    Accreditation --> Concept : status
-    Accreditation --> Concept : dc_type
     Accreditation --> Organisation : accreditingAgent
     Accreditation --> WebResource : landingPage
     Accreditation --> WebResource : foaf_homePage
     Accreditation --> WebResource : supplementaryDocument
     class Address["Address"]{
         +String adms_identifier
-
+        +Concept countryCode
     }
     Address --> Note : fullAddress
-    Address --> Concept : countryCode
     class Agent["Agent"]{
         +String adms_identifier
         +String skos_altLabel
@@ -49,8 +48,8 @@ classDiagram
         +String adms_identifier
         +String skos_altLabel
         +String skos_prefLabel
+        +Concept dc_type
     }
-    Group --> Concept : dc_type
     Group --> Note : additionalNote
     Group --> dc_Location : location
     Group --> ContactPoint : contactPoint

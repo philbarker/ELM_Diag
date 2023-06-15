@@ -3,3 +3,5 @@ Unofficial attempt to diagram the [European Learning Model](https://github.com/e
 Starting point is the [ELM RDF Ontology](https://github.com/european-commission-empl/European-Learning-Model/tree/master/rdf/ontology) turtle representation. 
 
 Starting by building diagram markdown by hand (but who knows, maybe a python script could automate it).
+
+Found it best to treat classification as a reference to Concepts as a characteristic rather than relationship as it reduces number of links very much.
