@@ -13,6 +13,4 @@ classDiagram
     LearningOpportunity --> Grant : grant
     class Grant["Grant"]
     class Qualification["Qualification]
-
-
 ```
