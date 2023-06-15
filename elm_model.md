@@ -54,10 +54,24 @@ classDiagram
     Group --> dc_Location : location
     Group --> ContactPoint : contactPoint
     Group --> Agent : foaf_member
-
+    class Amount["Amount"]{
+        +Concept unit
+        +String value
+    }
+    class AwardingOpportunity["Awarding Opportunity"]{
+        +String adms_identifier
+    }
+    AwardingOpportunity --> dc_Location : location
+    AwardingOpportunity --> LearningAchievementSpecification : learningAchievementSpecification
+    AwardingOpportunity --> dc_temproal : dc_PeriodOfTime
+    AwardingOpportunity --> Organisation : awardingBody 
 
     class LearningOpportunity["Learning Opportunity"]
     LearningOpportunity --> Grant : grant
     class Qualification["Qualification"]
     class Grant["Grant"]
+    class dc_PeriodOfTime[dcterms Period of Time]{
+        +Date startDate
+        +Date endDate
+    }
 ```
