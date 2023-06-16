@@ -54,19 +54,6 @@ classDiagram
     Agent --> dc_Location : location
     Agent --> ContactPoint : contactPoint
 %%=========
-%% Group
-%%=========
-    class Group["Group"]{
-        +String adms_identifier
-        +String skos_altLabel
-        +String skos_prefLabel
-        +Concept dc_type
-    }
-    Group --> Note : additionalNote
-    Group --> dc_Location : location
-    Group --> ContactPoint : contactPoint
-    Group --> Agent : foaf_member
-%%=========
 %% Amount
 %%=========
     class Amount["Amount"]{
@@ -126,13 +113,6 @@ classDiagram
     ContactPoint --> Phone : phone
     ContactPoint --> Mailbox : emailAddress
     ContactPoint --> WebResource : contactForm
-
-```
-
-
-
-Copy from auto translation
-
 %%======
 %% Contact Point
 %%======
@@ -187,11 +167,19 @@ Copy from auto translation
 %%======
     class GradingScheme["Grading Scheme"]{
     }
-%%======
+%%=========
 %% Group
-%%======
+%%=========
     class Group["Group"]{
+        +String adms_identifier
+        +String skos_altLabel
+        +String skos_prefLabel
+        +Concept dc_type
     }
+    Group --> Note : additionalNote
+    Group --> dc_Location : location
+    Group --> ContactPoint : contactPoint
+    Group --> Agent : foaf_member
 %%======
 %% Identifier
 %%======
@@ -307,7 +295,7 @@ Copy from auto translation
 %%======
     class Note["Note"]{
     }
-Remaining properties:  [rdflib.term.URIRef('http://data.europa.eu/snb/model/elm/noteLiteral'), rdflib.term.URIRef('http://data.europa.eu/snb/model/elm/noteFormat')]
+%%% Remaining properties:  [rdflib.term.URIRef('http://data.europa.eu/snb/model/elm/noteLiteral'), rdflib.term.URIRef('http://data.europa.eu/snb/model/elm/noteFormat')]
 %%======
 %% Organisation
 %%======
@@ -399,6 +387,12 @@ Remaining properties:  [rdflib.term.URIRef('http://data.europa.eu/snb/model/elm/
 %%======
     class WebResource["Web Resource"]{
     }
+
+```
+
+
+
+
 %%======
 %% Shacl Validator 2017
 %%======
