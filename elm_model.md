@@ -33,6 +33,7 @@ classDiagram
     Accreditation --> WebResource : landingPage
     Accreditation --> WebResource : foaf_homePage
     Accreditation --> WebResource : supplementaryDocument
+    Accreditation --> Note : additionalNote
 %%=========
 %% Address
 %%=========
@@ -54,6 +55,19 @@ classDiagram
     Agent --> dc_Location : location
     Agent --> ContactPoint : contactPoint
 %%=========
+%% Group
+%%=========
+    class Group["Group"]{
+        +String adms_identifier
+        +String skos_altLabel
+        +String skos_prefLabel
+        +Concept dc_type
+    } 
+    Group --> Note : additionalNote
+    Group --> dc_Location : location
+    Group --> ContactPoint : contactPoint
+    Group --> Agent : foaf_member
+%%=========
 %% Amount
 %%=========
     class Amount["Amount"]{
@@ -68,8 +82,15 @@ classDiagram
     }
     AwardingOpportunity --> dc_Location : location
     AwardingOpportunity --> LearningAchievementSpecification : learningAchievementSpecification
-    AwardingOpportunity --> dc_temproal : dc_PeriodOfTime
+    AwardingOpportunity --> dc_temporal : dc_PeriodOfTime
     AwardingOpportunity --> Organisation : awardingBody 
+%%=========
+%% Period of Time
+%%=========
+    class dc_PeriodOfTime["Period of Time"]{
+        +Date startDate
+        +Date endDate
+    }
 %%=========
 %% AwardingProcess
 %%=========
@@ -109,15 +130,10 @@ classDiagram
 %% Contact Point
 %%======
     class ContactPoint["Contact Point"]{
+        +String dc_description
     }
-    ContactPoint --> Phone : phone
-    ContactPoint --> Mailbox : emailAddress
-    ContactPoint --> WebResource : contactForm
-%%======
-%% Contact Point
-%%======
-    class ContactPoint["Contact Point"]{
-    }
+    ContactPoint --> Note : additionalNote
+    ContactPoint --> Address : address
     ContactPoint --> Phone : phone
     ContactPoint --> Mailbox : emailAddress
     ContactPoint --> WebResource : contactForm
@@ -125,18 +141,29 @@ classDiagram
 %% Credit Point
 %%======
     class CreditPoint["Credit Point"]{
+        +String point
     }
+    CreditPoint --> WebResource: framework
+
 %%======
 %% Display Parameter
 %%======
     class DisplayParameter ["Display Parameter"]{
+        +String dc_title
+        +String dc_description
+        +String summaryDisplay
+        +Concept dc_language
+        +Concept primaryLanguage
     }
     DisplayParameter  --> IndividualDisplay : individualDisplay
 %%======
 %% Display Detail
 %%======
     class DisplayDetail["Display Detail"]{
+        +Integer page
     }
+    DisplayDetail --> MediaObject : image
+
 %%======
 %% Evidence
 %%======
@@ -146,10 +173,22 @@ classDiagram
 %% European Digital Credential
 %%======
     class EuropeanDigitalCredential["European Digital Credential"]{
+        +String adms_identifier
+        +Date dc_issued
+        +Date cred_validFrom
+        +Date cred_validUntil
+        +Date cred_issuanceDate
+        +Date cred_expirationDate
         +Concept  credentialProfiles
+        +Concept cred_credentialStatus
     }
     EuropeanDigitalCredential --> DisplayParameter  : displayParameter
-    EuropeanDigitalCredential --> MediaObject : attachment
+    EuropeanDigitalCredential --> MediaObject : attachment 
+    EuropeanDigitalCredential --> Organisation : cred_issuer
+    EuropeanDigitalCredential --> Person : cred_subject
+    EuropeanDigitalCredential --> WebResource : cred_evidence 
+    EuropeanDigitalCredential --> WebResource : cred_termsOfUse
+    EuropeanDigitalCredential --> WebResource : cred_credentialSchema
 %%======
 %% European Digital Credential Presentation
 %%======
@@ -161,12 +200,21 @@ classDiagram
 %% Grant
 %%======
     class Grant["Grant"]{
+        +String dc:title
+        +String dc:description
+        +Concept dc:type
+        +URI contentUrl
     }
+    Grant --> WebResource : supplementaryDocument
 %%======
 %% Grading Scheme
 %%======
     class GradingScheme["Grading Scheme"]{
+        +String adms_identifier
+        +String dc:title
+        +String dc:description
     }
+    GradingScheme --> WebResource : supplementaryDocument
 %%=========
 %% Group
 %%=========
@@ -184,43 +232,116 @@ classDiagram
 %% Identifier
 %%======
     class Identifier["Identifier"]{
+        +String skos_notation
+        +String adms_schemeAgency
+        +String schemeName
+        +String schemeVersion
+        +String schemeId
+        +Date dc_issued
+        +Concept dc_type
     }
+    Identifier --> Agent : dc_creator
 %%======
 %% Individual display
 %%======
     class IndividualDisplay["Individual display"]{
+        +Concept dc_language
     }
     IndividualDisplay --> DisplayDetail : displayDetail
 %%======
 %% Learning Achievement
 %%======
     class LearningAchievement["Learning Achievement"]{
+        +String adms_identifier
+        +String dc:title
+        +String dc:description
     }
+    LearningAchievement --> Note : additionalNote
+    LearningAchievement --> WebResource : supplementaryDocument
+    LearningAchievement --> LearningAchievement: hasPart
+    LearningAchievement --> Specification : specifiedBy
+    LearningAchievement --> AwardingProcess : awardedBy
+    LearningAchievement --> CreditPoint : creditReceived
+    LearningAchievement --> LearningAssessment : provenBy
+    LearningAchievement --> LearningActivity : influencedBy
+    LearningAchievement --> LearningEntitlement : entitlesTo
+    LearningAchievement --> LearningOpportunity : learningOpportunity
 %%======
 %% Learning Achievement Specification
 %%======
     class LearningAchievementSpecification["Learning Achievement Specification"]{
+        +String adms_identifier
+        +String dc_title
+        +String skos_altLabel
+        +String dc_description
+        +String category
+        +Date lastModificationDate
+        +Duration volumeOfLearning
         +Duration maximumDuration
+        +Concept dc_type
+        +Concept dc_language
+        +Concept mode
         +Concept  ISCEDFCode
         +Concept  educationSubject
+        +Concept  educationLevel
         +Concept  learningSetting
         +Concept  targetGroup
     }
+    LearningAchievementSpecification --> Note : additionalNote
+    LearningAchievementSpecification --> LearningAchievementSpecification : hasPart
+    LearningAchievementSpecification --> LearningAchievementSpecification : specialisationOf
+    LearningAchievementSpecification --> WebResource : foaf_homePage
+    LearningAchievementSpecification --> WebResource : supplementaryDocument
     LearningAchievementSpecification --> Note : learningOutcomeSummary
     LearningAchievementSpecification --> CreditPoint : creditPoint
     LearningAchievementSpecification --> Note : entryRequirement
     LearningAchievementSpecification --> LearningOutcome : learningOutcome
     LearningAchievementSpecification --> AwardingOpportunity : awardingOpportunity
+    LearningAchievementSpecification --> LearningAssessment : provenBy
+    LearningAchievementSpecification --> LearningActivity : influencedBy
+    LearningAchievementSpecification --> LearningEntitlement : entitlesTo
 %%======
 %% Learning Activity
 %%======
     class LearningActivity["Learning Activity"]{
+        +String adms_identifier
+        +String dc:title
+        +String dc:description
+        +String category
+        +Duration volumeOfLearning
+        +Concept dc_type
+        +Concept dc_language
+        +Concept mode
     }
+    LearningActivity --> Note : additionalNote
+    LearningActivity --> WebResource : supplementaryDocument
+    LearningActivity --> AwardingProcess : awardedBy
+    LearningActivity --> dc_temporal : dc_PeriodOfTime
+    LearningActivity --> LearningOpportunity : learningOpportunity
+    LearningActivity --> LearningActivity : hasPart
+    LearningActivity --> LearningActivitySpecification : specifiedBy
+
 %%======
 %% Learning Activity Specification
 %%======
     class LearningActivitySpecification["Learning Activity Specification"]{
+        +String adms_identifier
+        +String skos:altLabel
+        +String dc:title
+        +String dc:description
+        +String category
+        +String contactHour
+        +Date lastModificationDate
+        +Duration volumeOfLearning
+        +Concept dc_type
+        +Concept dc_language
     }
+    LearningActivitySpecification --> Note : additionalNote
+    LearningActivitySpecification --> WebResource : foaf_homePage
+    LearningActivitySpecification --> WebResource : supplementaryDocument
+    LearningActivitySpecification --> LearningActivitySpecification : hasPart
+    LearningActivitySpecification --> LearningActivitySpecification : specialisationOf
+
 %%======
 %% Learning Assessment
 %%======
