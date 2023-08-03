@@ -906,7 +906,7 @@ elm:awardedBy
   .
 
 #---------      Code Class (represented as a Skos:Concept)  properties    --------------
-#skos:inScheme, skos:prefLabel
+### skos:inScheme, skos:prefLabel
 
 #-----------    Contact Point properties    -------------
 
@@ -967,7 +967,7 @@ elm:point
   .
 
 #------------   Display Parameter properties   ----------------
-#dc:title, dc:description, dc:language
+### dc:title, dc:description, dc:language
 
 elm:primaryLanguage
   a rdf:Property; 
@@ -1011,11 +1011,11 @@ elm:individualDisplay
   rdfs:range elm:IndividualDisplay;
   .
 
-#----------    European Digital Credential Properties   ---------------------
+#----------    European Digital Credential properties   ---------------------
 
 ## Re-used properties
 ### adms:identifier, dc:issued,  cred:issuer, cred:credentialSubject, cred:proof
-### cred:validFrom, cred:validUntil, cred:issuanceDate,cred:expirationDate, cred:evidence, cred:termsOfUse, cred:credentialStatus, cred:credentialSchema
+### cred:validFrom, cred:validUntil, cred:issuanceDate, cred:expirationDate, cred:evidence, cred:termsOfUse, cred:credentialStatus, cred:credentialSchema
 
 elm:displayParameter
   a rdf:Property; 
@@ -1086,7 +1086,7 @@ elm:verificationCheck
 ### adms:identifier, dc:title, dc:description, elm:supplementaryDocument;
 
 #-------------      Individual Display  properties     -------------------------
-#dc:language
+### dc:language
 
 elm:displayDetail
   a rdf:Property;
@@ -1120,7 +1120,7 @@ elm:page
 #-------------      Identifier properties     -------------------------
 
 ## Re-used properties
-### skos:notation,dc:creator, adms:schemeAgency, dc:issued, dc:type
+### skos:notation, dc:creator, adms:schemeAgency, dc:issued, dc:type
 
 elm:schemeName
   a rdf:Property;
@@ -1547,7 +1547,7 @@ elm:entitledBy
 
 ## Re-used properties
 ### adms:identifier, dc:title, dc:type, skos:altLabel, dc:description, elm:additionalNote, foaf:homepage
-### elm:supplementaryDocument, elm:category, elm:status, elm:entitledBy, elm:hasPart,  elm:specialisationOf, elm:lastModificationDate
+### elm:supplementaryDocument, elm:category, elm:status, elm:entitledBy, elm:hasPart, elm:specialisationOf, elm:lastModificationDate
 
 elm:limitOrganisation
   a rdf:Property;
@@ -1775,7 +1775,7 @@ elm:relatedESCOSkill
 ## Re-used properties
 ### skos:notation, dc:creator, adms:schemeAgency, dc:issued, dc:type, elm:schemeName, elm:schemeVersion, dc:spatial
 
-#------------ Location properties-----------
+#------------ Location properties -----------
 
 ## Re-used properties
 ### adms:identifier, dc:description
@@ -1813,10 +1813,10 @@ elm:spatialCode
 
 #----------- Mailbox Class properties ---------------
 
-# ---------  Media Object properties ----------
+#---------  Media Object properties ----------
 
 ## Re-used properties
-# dc:title, dc:description
+### dc:title, dc:description
 
 
 elm:contentEncoding
@@ -1873,7 +1873,7 @@ elm:contentType
   rdfs:domain elm:MediaObject;
   rdfs:range skos:Concept;
   . 
-# --------    Note properties   --------------------------
+#--------    Note properties   --------------------------
 
 ## Re-used properties
 ### dc:language, dc:subject
@@ -2138,7 +2138,8 @@ elm:amount
   rdfs:domain elm:PriceDetail;
   rdfs:range elm:Amount;
   .
-# ------        Qualification properties ----------------
+
+#-------        Qualification properties ----------------
 
 ## Re-used properties
 ### adms:identifier, dct:type, dc:title, skos:altLabel, dc:description, elm:additionalNote, foaf:homepage
@@ -2191,7 +2192,7 @@ elm:qualificationCode
   rdfs:range skos:Concept;
 .
 
-# ------        Qualification Reference properties ----------------
+#------        Qualification Reference properties ----------------
 
 ## Re-used properties
 ### adms:identifier
@@ -2266,7 +2267,7 @@ elm:resultCategory
   rdfs:range elm:ResultCategory;
 .
 
-# -----     Shortened Grading properties      ------------ 
+#-----     Shortened Grading properties      ------------ 
 
 elm:percentageLower
   a rdf:Property; 
@@ -2368,7 +2369,7 @@ elm:verificationStatus
   rdfs:range skos:Concept;
   .
 
-# -----------   Web Resource properties     -----------------
+#-----------   Web Resource properties     -----------------
 
 ## Re-used properties
 ### dc:title, dc:language, foaf:topic,
@@ -2383,8 +2384,9 @@ elm:contentUrl
   rdfs:range xsd:anyURI;
   .
 
-# -----------   Evidence properties  ----
-#dc:type
+#-----------   Evidence properties  ----
+
+### dc:type
 
 elm:evidenceStatement
   a rdf:Property;
