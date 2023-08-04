@@ -1,3 +1,7 @@
+# ELM Learning Opportunity.
+
+European Learning Model (ELM) showing just the neighbourhood aournd the `LearningOpportunity` class. See [readme](README.md) for details. 
+
 ```mermaid
 ---
 title: ELM Model

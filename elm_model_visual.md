@@ -1,4 +1,8 @@
 
+# European Learning Model data model diagrammed using Mermaid.
+
+See [readme](README.md) for details. Yes there is too much in this diagram to be useful 
+
 ```mermaid
 ---
 title: ELM Model
